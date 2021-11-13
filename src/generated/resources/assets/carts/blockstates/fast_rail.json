@@ -1,0 +1,25 @@
+{
+  "variants": {
+    "shape=north_south": {
+      "model": "carts:block/fast_rail"
+    },
+    "shape=east_west": {
+      "model": "carts:block/fast_rail",
+      "y": 90
+    },
+    "shape=ascending_east": {
+      "model": "carts:block/fast_rail_raised_ne",
+      "y": 90
+    },
+    "shape=ascending_west": {
+      "model": "carts:block/fast_rail_raised_sw",
+      "y": 90
+    },
+    "shape=ascending_north": {
+      "model": "carts:block/fast_rail_raised_ne"
+    },
+    "shape=ascending_south": {
+      "model": "carts:block/fast_rail_raised_sw"
+    }
+  }
+}

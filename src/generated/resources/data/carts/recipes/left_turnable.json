@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "   ",
+    "RR ",
+    " R "
+  ],
+  "key": {
+    "R": {
+      "item": "minecraft:rail"
+    }
+  },
+  "result": {
+    "item": "carts:left_turnable",
+    "count": 3
+  }
+}

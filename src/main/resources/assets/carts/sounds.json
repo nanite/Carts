@@ -1,0 +1,11 @@
+{
+  "whistle": {
+    "category": "block",
+    "sounds": [
+      {
+        "name": "carts:whistle",
+        "stream": true
+      }
+    ]
+  }
+}

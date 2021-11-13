@@ -1,0 +1,13 @@
+{
+  "block.carts.fast_rail": "Fast Rail",
+  "block.carts.four_way": "Four Way",
+  "block.carts.left_turnable": "Left Turnable",
+  "block.carts.normal_rail": "Normal Rail",
+  "block.carts.rail_detector": "Rail Detector",
+  "block.carts.slow_rail": "Slow Rail",
+  "block.carts.stop_rail": "Stop Rail",
+  "block.carts.turnable": "Turnable",
+  "entity.carts.train": "Train",
+  "item.carts.train": "Train",
+  "itemGroup.carts": "Carts"
+}

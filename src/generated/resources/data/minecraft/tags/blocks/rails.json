@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "carts:slow_rail",
+    "carts:normal_rail",
+    "carts:fast_rail",
+    "carts:stop_rail",
+    "carts:four_way",
+    "carts:turnable",
+    "carts:left_turnable"
+  ]
+}

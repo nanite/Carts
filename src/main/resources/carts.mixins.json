@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "package": "com.unrealdinnerbone.carts.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "refmap": "carts.refmap.json",
+  "mixins": [
+    "RailMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "minVersion": "0.8.1"
+}

@@ -1,0 +1,23 @@
+{
+  "variants": {
+    "shape=north_south": {
+      "model": "carts:block/four_way"
+    },
+    "shape=east_west": {
+      "model": "carts:block/four_way",
+      "y": 90
+    },
+    "shape=south_east": {
+      "model": "carts:block/four_way"
+    },
+    "shape=south_west": {
+      "model": "carts:block/four_way"
+    },
+    "shape=north_west": {
+      "model": "carts:block/four_way"
+    },
+    "shape=north_east": {
+      "model": "carts:block/four_way"
+    }
+  }
+}

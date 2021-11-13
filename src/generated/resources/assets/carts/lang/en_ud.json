@@ -1,0 +1,13 @@
+{
+  "block.carts.fast_rail": "\u05DF\u0131\u0250\u1D1A \u0287s\u0250\u2132",
+  "block.carts.four_way": "\u028E\u0250M \u0279no\u2132",
+  "block.carts.left_turnable": "\u01DD\u05DFq\u0250u\u0279n\u27D8 \u0287\u025F\u01DD\uA780",
+  "block.carts.normal_rail": "\u05DF\u0131\u0250\u1D1A \u05DF\u0250\u026F\u0279oN",
+  "block.carts.rail_detector": "\u0279o\u0287\u0254\u01DD\u0287\u01DD\u15E1 \u05DF\u0131\u0250\u1D1A",
+  "block.carts.slow_rail": "\u05DF\u0131\u0250\u1D1A \u028Do\u05DFS",
+  "block.carts.stop_rail": "\u05DF\u0131\u0250\u1D1A do\u0287S",
+  "block.carts.turnable": "\u01DD\u05DFq\u0250u\u0279n\u27D8",
+  "entity.carts.train": "u\u0131\u0250\u0279\u27D8",
+  "item.carts.train": "u\u0131\u0250\u0279\u27D8",
+  "itemGroup.carts": "s\u0287\u0279\u0250\u0186"
+}

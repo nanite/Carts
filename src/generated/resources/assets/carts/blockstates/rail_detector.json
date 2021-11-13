@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "carts:block/rail_detector"
+    }
+  }
+}
