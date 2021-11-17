@@ -53,6 +53,7 @@ public class TrainEntity extends ContainerMinecartEntity {
     }
 
     public void setFlipped(boolean flipped) {
+        this.setDeltaMovement(this.getDeltaMovement().multiply(-1, 0, -1));
         this.flipped = flipped;
     }
 
@@ -72,7 +73,6 @@ public class TrainEntity extends ContainerMinecartEntity {
                             if(time > 0) {
                                 stack.shrink(1);
                                 this.burnTime = time;
-//                            this.cartDirection = Direction.FORWARDS;
                                 setPushed(1, 1);
                                 setSpeed(Speed.NORMAL);
                                 break;
@@ -202,6 +202,7 @@ public class TrainEntity extends ContainerMinecartEntity {
         AbstractMinecartEntity mc = getMinecart();
         double speed = this.speed.getSpeed();
         Vector3d vec3d1 = mc.getDeltaMovement();
+//        vec3d1 = vec3d1.multiply(-1, 0, -1);
         double x = MathHelper.clamp(speed * vec3d1.x, -speed, speed);
         double z = MathHelper.clamp(speed * vec3d1.z, -speed, speed);
         mc.move(MoverType.SELF, new Vector3d(x, 0.0D, z));

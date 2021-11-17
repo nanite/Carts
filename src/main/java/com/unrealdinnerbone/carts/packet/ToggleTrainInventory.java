@@ -13,7 +13,7 @@ import java.util.function.Supplier;
 
 public class ToggleTrainInventory
 {
-    private int entityId;
+    private final int entityId;
 
     public ToggleTrainInventory(TrainEntity trainCart) {
         this.entityId = trainCart.getId();

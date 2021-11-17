@@ -1,17 +1,13 @@
 package com.unrealdinnerbone.carts;
 
-import com.unrealdinnerbone.carts.client.TrainRender;
-import com.unrealdinnerbone.carts.client.TrainScreen;
 import com.unrealdinnerbone.carts.lib.ClickKeyBinding;
-import com.unrealdinnerbone.carts.packet.ToggleTrainInventory;
 import com.unrealdinnerbone.carts.packet.SetSpeedPacket;
-import com.unrealdinnerbone.carts.packet.SetTrainWhistlePacket;
-import net.minecraft.client.gui.ScreenManager;
+import com.unrealdinnerbone.carts.packet.SetTrainDirectionPacket;
+import com.unrealdinnerbone.carts.packet.ToggleTrainInventory;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
-import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import org.lwjgl.glfw.GLFW;
 
@@ -24,9 +20,9 @@ public class CartsClient
     private static final KeyBinding SLOWER = new ClickKeyBinding("key.jamm.slower", GLFW.GLFW_KEY_S,
             trainEntity -> CartsPackets.CHANNEL.sendToServer(new SetSpeedPacket(trainEntity, false)));
 
-    private static final KeyBinding WHISTLE = new ClickKeyBinding("key.jamm.whistle",  GLFW.GLFW_KEY_P,
-            trainEntity ->  CartsPackets.CHANNEL.sendToServer(new SetTrainWhistlePacket(trainEntity, true)),
-            trainEntity -> CartsPackets.CHANNEL.sendToServer(new SetTrainWhistlePacket(trainEntity, false)));
+    private static final KeyBinding DIRECTION = new ClickKeyBinding("key.jamm.direction",  GLFW.GLFW_KEY_P,
+            trainEntity ->  CartsPackets.CHANNEL.sendToServer(new SetTrainDirectionPacket(trainEntity, true)),
+            trainEntity -> CartsPackets.CHANNEL.sendToServer(new SetTrainDirectionPacket(trainEntity, false)));
 
     private static final KeyBinding INVENTORY = new ClickKeyBinding("key.jamm.inventory", GLFW.GLFW_KEY_E,
             trainEntity -> CartsPackets.CHANNEL.sendToServer(new ToggleTrainInventory(trainEntity)));
@@ -35,7 +31,7 @@ public class CartsClient
     public static void doClientStuff(final FMLClientSetupEvent event) {
         ClientRegistry.registerKeyBinding(FASTER);
         ClientRegistry.registerKeyBinding(SLOWER);
-        ClientRegistry.registerKeyBinding(WHISTLE);
+        ClientRegistry.registerKeyBinding(DIRECTION);
         ClientRegistry.registerKeyBinding(INVENTORY);
         RenderTypeLookup.setRenderLayer(CartsRegistry.SLOW_RAIL.get(), RenderType.cutout());
         RenderTypeLookup.setRenderLayer(CartsRegistry.NORMAL_RAIL.get(), RenderType.cutout());

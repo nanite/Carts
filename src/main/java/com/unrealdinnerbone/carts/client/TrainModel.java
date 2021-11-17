@@ -75,7 +75,6 @@ public class TrainModel extends EntityModel<TrainEntity> {
         this.trim.y = 4.0F - ageInTicks;
         this.buffersback.y = 4.0F - ageInTicks;
         this.buffersf.y = 4.0F - ageInTicks;
-        //previously the render function, render code was moved to a method below
     }
 
     @Override

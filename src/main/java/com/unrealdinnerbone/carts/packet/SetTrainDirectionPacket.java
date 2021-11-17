@@ -9,23 +9,20 @@ import net.minecraftforge.fml.network.NetworkEvent.Context;
 
 import java.util.function.Supplier;
 
-public class SetTrainWhistlePacket {
+public class SetTrainDirectionPacket {
 
-    private int entityId;
-    private boolean whistle;
+    private final int entityId;
+    private final boolean whistle;
 
-    public SetTrainWhistlePacket(TrainEntity trainCart, boolean active) {
+    public SetTrainDirectionPacket(TrainEntity trainCart, boolean active) {
         this.entityId = trainCart.getId();
         this.whistle = active;
     }
 
-    public SetTrainWhistlePacket(PacketBuffer buf) {
+    public SetTrainDirectionPacket(PacketBuffer buf) {
         this.entityId = buf.readInt();
         this.whistle = buf.readBoolean();
     }
-
-
-
 
     public void encode(PacketBuffer buf) {
         buf.writeInt(this.entityId);
@@ -41,7 +38,7 @@ public class SetTrainWhistlePacket {
                     if(server != null) {
                         TrainEntity trainCart = (TrainEntity) ctx.getSender().level.getEntity(this.entityId);
                         if(trainCart != null) {
-                            trainCart.setWhistle(this.whistle);
+                            trainCart.setFlipped(this.whistle);
                         }
                     }
                 }
