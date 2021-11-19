@@ -36,3 +36,9 @@ CREDITS-fml.txt
 LICENSE-fml.txt
 
 run/*
+
+data/
+
+logs/
+
+dos2unix.exe

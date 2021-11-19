@@ -212,7 +212,7 @@ public class CartsRegistry {
 
 
 
-    private static final List<RailShape> SHAPES = Arrays.asList(RailShape.ASCENDING_EAST, RailShape.ASCENDING_WEST, RailShape.EAST_WEST);
+
 
 
     private static void railPowerdBlockstate(DataGenContext<Block, ? extends AbstractRailBlock> c, RegistrateBlockstateProvider p) {
@@ -238,7 +238,6 @@ public class CartsRegistry {
                     }
 
 
-
                     String name = shape == RailShape.ASCENDING_NORTH || shape == RailShape.ASCENDING_EAST ? "ne" : "sw";
                     String blockName = c.get().getRegistryName().getPath();
 
@@ -256,7 +255,7 @@ public class CartsRegistry {
     }
 
 
-
+    private static final List<RailShape> SHAPES = Arrays.asList(RailShape.ASCENDING_EAST, RailShape.ASCENDING_WEST, RailShape.EAST_WEST);
 
     private static void railBlockstate(DataGenContext<Block, ? extends AbstractRailBlock> c, RegistrateBlockstateProvider p) {
         p.getVariantBuilder(c.get())
@@ -264,9 +263,35 @@ public class CartsRegistry {
                     RailShape shape = state.getValue(c.get().getShapeProperty());
 
                     int yRotation = SHAPES.contains(shape) ? 90 : 0;
+                    int xRotation = 0;
 
                     String name = shape == RailShape.ASCENDING_NORTH || shape == RailShape.ASCENDING_EAST ? "ne" : "sw";
                     String blockName = c.get().getRegistryName().getPath();
+
+//
+                    if(state.hasProperty(SpeedRailBlock.FACING)) {
+                        Direction facing = state.getValue(SpeedRailBlock.FACING);
+                        switch(facing) {
+                            case SOUTH:
+                                yRotation = 180;
+                                break;
+                            case WEST:
+                                yRotation = -90;
+                                break;
+                            case EAST:
+                                yRotation = 90;
+                        }
+                    }
+
+                    if(shape == RailShape.ASCENDING_WEST || shape == RailShape.ASCENDING_SOUTH) {
+                        yRotation = 0;
+                        if(shape == RailShape.ASCENDING_WEST) {
+                            xRotation = 180;
+                            yRotation = 90;
+                        }else {
+                            xRotation = 180;
+                        }
+                    }
 
                     ResourceLocation texture = new ResourceLocation(c.get().getRegistryName().getNamespace(), "block/" + c.get().getRegistryName().getPath());
                     String fileLocation = shape.isAscending() ? blockName + "_raised_" + name : blockName;
@@ -277,6 +302,7 @@ public class CartsRegistry {
                                     .withExistingParent(fileLocation, new ResourceLocation("minecraft", "block/" + parentId))
                                     .texture("rail", texture))
                             .rotationY(yRotation)
+                            .rotationX(xRotation)
                             .build();
                 });
     }

@@ -3,11 +3,14 @@ package com.unrealdinnerbone.carts.block;
 import com.unrealdinnerbone.carts.entity.TrainEntity;
 import net.minecraft.block.*;
 import net.minecraft.entity.item.minecart.AbstractMinecartEntity;
+import net.minecraft.item.BlockItemUseContext;
+import net.minecraft.state.DirectionProperty;
 import net.minecraft.state.EnumProperty;
 import net.minecraft.state.Property;
 import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.state.properties.RailShape;
+import net.minecraft.util.Direction;
 import net.minecraft.util.Mirror;
 import net.minecraft.util.Rotation;
 import net.minecraft.util.math.BlockPos;
@@ -16,13 +19,14 @@ import net.minecraft.world.World;
 public class SpeedRailBlock extends AbstractRailBlock {
 
     public static final EnumProperty<RailShape> SHAPE = BlockStateProperties.RAIL_SHAPE_STRAIGHT;
+    public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
 
     private final TrainEntity.Speed speed;
 
     public SpeedRailBlock(Properties properties, TrainEntity.Speed speed) {
         super(true, properties);
         this.speed = speed;
-        this.registerDefaultState(this.stateDefinition.any().setValue(SHAPE, RailShape.NORTH_SOUTH));
+        this.registerDefaultState(this.stateDefinition.any().setValue(SHAPE, RailShape.NORTH_SOUTH).setValue(FACING, Direction.NORTH));
     }
 
 
@@ -153,7 +157,14 @@ public class SpeedRailBlock extends AbstractRailBlock {
 
     @Override
     protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> pBuilder) {
-        pBuilder.add(SHAPE);
+        pBuilder.add(SHAPE, FACING);
+    }
+
+
+    @Override
+    public BlockState getStateForPlacement(BlockItemUseContext context) {
+        Direction direction = context.getHorizontalDirection();
+        return super.getStateForPlacement(context).setValue(FACING, direction);
     }
 
     @Override
