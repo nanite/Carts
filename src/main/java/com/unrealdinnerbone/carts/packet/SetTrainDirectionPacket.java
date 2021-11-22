@@ -38,7 +38,7 @@ public class SetTrainDirectionPacket {
                     if(server != null) {
                         TrainEntity trainCart = (TrainEntity) ctx.getSender().level.getEntity(this.entityId);
                         if(trainCart != null) {
-                            trainCart.setFlipped(this.whistle);
+                            trainCart.setDirection(whistle ? TrainEntity.Direction.FORWARDS : TrainEntity.Direction.BACKWARDS);
                         }
                     }
                 }

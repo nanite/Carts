@@ -9,12 +9,16 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.MoverType;
 import net.minecraft.entity.item.minecart.AbstractMinecartEntity;
 import net.minecraft.entity.item.minecart.ContainerMinecartEntity;
+import net.minecraft.entity.item.minecart.FurnaceMinecartEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.IPacket;
+import net.minecraft.network.datasync.DataParameter;
+import net.minecraft.network.datasync.DataSerializers;
+import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
@@ -29,6 +33,7 @@ import net.minecraftforge.fml.network.NetworkHooks;
 
 public class TrainEntity extends ContainerMinecartEntity {
 
+    private static final DataParameter<Boolean> DIRECTION = EntityDataManager.defineId(TrainEntity.class, DataSerializers.BOOLEAN);
     private boolean whistle = false;
     private double burnTime;
     public double xPush;
@@ -52,9 +57,28 @@ public class TrainEntity extends ContainerMinecartEntity {
         return Type.RIDEABLE;
     }
 
-    public void setFlipped(boolean flipped) {
-        this.setDeltaMovement(this.getDeltaMovement().multiply(-1, 0, -1));
-        this.flipped = flipped;
+    public Direction getCurrentDirection() {
+        return this.entityData.get(DIRECTION) ? Direction.FORWARDS : Direction.BACKWARDS;
+    }
+
+    public void setDirection(Direction direction) {
+        if(direction != getCurrentDirection()) {
+            this.setDeltaMovement(this.getDeltaMovement().multiply(-1, 0, -1));
+            this.entityData.set(DIRECTION, flipped);
+            this.flipped = direction.isForwards();
+        }
+    }
+
+    @Override
+    public double getPassengersRidingOffset() {
+        return 0.1f;
+    }
+
+    @Override
+    protected void defineSynchedData() {
+        super.defineSynchedData();
+        this.entityData.define(DIRECTION, true);
+
     }
 
     public void tick() {
@@ -332,8 +356,18 @@ public class TrainEntity extends ContainerMinecartEntity {
 
 
     public enum Direction {
-        BACKWARDS,
-        FORWARDS;
+        BACKWARDS(false),
+        FORWARDS(true);
+
+        private final boolean forwards;
+
+        private Direction(boolean value) {
+            this.forwards = value;
+        }
+
+        public boolean isForwards() {
+            return forwards;
+        }
 
     }
 }

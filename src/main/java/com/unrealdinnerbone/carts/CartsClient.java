@@ -21,8 +21,7 @@ public class CartsClient
             trainEntity -> CartsPackets.CHANNEL.sendToServer(new SetSpeedPacket(trainEntity, false)));
 
     private static final KeyBinding DIRECTION = new ClickKeyBinding("key.jamm.direction",  GLFW.GLFW_KEY_P,
-            trainEntity ->  CartsPackets.CHANNEL.sendToServer(new SetTrainDirectionPacket(trainEntity, true)),
-            trainEntity -> CartsPackets.CHANNEL.sendToServer(new SetTrainDirectionPacket(trainEntity, false)));
+            trainEntity -> CartsPackets.CHANNEL.sendToServer(new SetTrainDirectionPacket(trainEntity, !trainEntity.getCurrentDirection().isForwards())));
 
     private static final KeyBinding INVENTORY = new ClickKeyBinding("key.jamm.inventory", GLFW.GLFW_KEY_E,
             trainEntity -> CartsPackets.CHANNEL.sendToServer(new ToggleTrainInventory(trainEntity)));
