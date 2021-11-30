@@ -175,6 +175,10 @@ if (ENV.CURSE_DEPLOY) {
             mainArtifact(jar)
             changelog = getGitChangelog()
             changelogType = 'markdown'
+            relations {
+                requiredDependency 'cc-tweaked'
+            }
         }
+
     }
 }
