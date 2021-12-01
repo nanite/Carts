@@ -172,7 +172,7 @@ if (ENV.CURSE_DEPLOY) {
             releaseType = project.release_type
             addGameVersion "Forge"
             addGameVersion project.minecraft_version
-            mainArtifact(jar)
+            mainArtifact(shadowJar)
             changelog = getGitChangelog()
             changelogType = 'markdown'
         }
