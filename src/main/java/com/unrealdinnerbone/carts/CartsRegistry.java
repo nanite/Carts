@@ -45,10 +45,15 @@ import static com.tterrag.registrate.providers.RegistrateRecipeProvider.hasItem;
 
 public class CartsRegistry {
 
-    public static void init() {}
-
-    private static final Registrate REGISTRATE = Registrate.create(Carts.MOD_ID)
+    public static final Registrate REGISTRATE = Registrate.create(Carts.MOD_ID)
             .itemGroup(CartsGroup::new, "Carts");
+
+    public static void init() {
+        CartsRegistry.REGISTRATE.addRawLang("key.carts.faster", "Faster");
+        CartsRegistry.REGISTRATE.addRawLang("key.carts.slower", "Slower");
+        CartsRegistry.REGISTRATE.addRawLang("key.carts.direction", "Direction");
+        CartsRegistry.REGISTRATE.addRawLang("key.carts.inventory", "Inventory");
+    }
 
 
     public static final Supplier<EntityType<TrainEntity>> TRAIN = REGISTRATE.entity("train", TrainEntity::new, EntityClassification.MISC)

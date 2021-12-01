@@ -9,5 +9,9 @@
   "block.carts.turnable": "Turnable",
   "entity.carts.train": "Train",
   "item.carts.train": "Train",
-  "itemGroup.carts": "Carts"
+  "itemGroup.carts": "Carts",
+  "key.carts.direction": "Direction",
+  "key.carts.faster": "Faster",
+  "key.carts.inventory": "Inventory",
+  "key.carts.slower": "Slower"
 }

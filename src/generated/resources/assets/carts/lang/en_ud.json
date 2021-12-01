@@ -9,5 +9,9 @@
   "block.carts.turnable": "\u01DD\u05DFq\u0250u\u0279n\u27D8",
   "entity.carts.train": "u\u0131\u0250\u0279\u27D8",
   "item.carts.train": "u\u0131\u0250\u0279\u27D8",
-  "itemGroup.carts": "s\u0287\u0279\u0250\u0186"
+  "itemGroup.carts": "s\u0287\u0279\u0250\u0186",
+  "key.carts.direction": "uo\u0131\u0287\u0254\u01DD\u0279\u0131\u15E1",
+  "key.carts.faster": "\u0279\u01DD\u0287s\u0250\u2132",
+  "key.carts.inventory": "\u028E\u0279o\u0287u\u01DD\u028CuI",
+  "key.carts.slower": "\u0279\u01DD\u028Do\u05DFS"
 }
